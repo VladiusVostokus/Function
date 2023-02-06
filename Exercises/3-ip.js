@@ -1,18 +1,11 @@
 'use strict';
 
-let sum = 0;
-let i;
+let sum;
 
-const ipToInt = (ip = '127.0.0.1') => {
-  const modIp = ip.split('.');
-  i = modIp.length - 1;
-  for (const elem of modIp) {
-    sum += Number(elem) << (8 * i);
-    i--;
-  }
-  console.log(sum);
+
+const ipToInt = (ip = '165.225.133.150') => {
+  const mIp = ip.split('.');
+  sum = mIp.reverse().reduce((acc, x2, i) => acc + (x2 << 8 * (i++)), 0);
+  return sum;
 };
-
-ipToInt();
-
-//module.exports = { ipToInt };
+module.exports = { ipToInt };
